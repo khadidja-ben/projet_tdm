@@ -9,12 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projet_tdm">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".ui.medecin.MedecinActivity"
+            android:label="@string/title_activity_medecin"
+            android:theme="@style/Theme.Projet_tdm.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".PatientActivity"
+            android:label="@string/title_activity_patient"
+            android:theme="@style/Theme.Projet_tdm">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".AuthActivity">
         </activity>
     </application>
 
