@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -47,6 +48,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    api 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 }
