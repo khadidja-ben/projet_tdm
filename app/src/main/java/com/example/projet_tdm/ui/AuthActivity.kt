@@ -1,7 +1,8 @@
-package com.example.projet_tdm
+package com.example.projet_tdm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.projet_tdm.R
 
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
