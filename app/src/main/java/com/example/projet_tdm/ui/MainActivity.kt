@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.projet_tdm.ui.MyAdapter
 import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Doctor
 import com.example.projet_tdm.retrofit.RetrofitService
@@ -28,8 +27,8 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data != null) {
-                        recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-                        recyclerView.adapter = MyAdapter(this@MainActivity, data)
+                        specRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+                        specRecyclerView.adapter = MyAdapter(this@MainActivity, data)
                         Toast.makeText(this@MainActivity, "success", Toast.LENGTH_LONG ).show()
                     }
                 } else {

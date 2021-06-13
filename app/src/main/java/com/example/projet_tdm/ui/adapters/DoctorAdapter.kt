@@ -1,4 +1,4 @@
-package com.example.projet_tdm.ui
+package com.example.projet_tdm.ui.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -13,24 +13,31 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Doctor
+import com.example.projet_tdm.ui.medcinDetails
 import com.example.projet_tdm.url
 
-class MyAdapter(val context: Context,var data:List<Doctor>):RecyclerView.Adapter<MyViewHolder>()
-{
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.doctor_layout, parent, false))
+class DoctorAdapter(val context: Context) :
+    RecyclerView.Adapter<DoctorViewHolder>() {
+
+    var data = listOf<Doctor>()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorViewHolder {
+        return DoctorViewHolder(
+            LayoutInflater.from(context)
+                .inflate(R.layout.doctor_layout, parent, false)
+        )
 
     }
 
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
+
         holder.name.text = data[position].name
         holder.lastName.text = data[position].lastName
-        holder.phone.text = data[position].phone
-
-        Glide.with(context).load(url+data[position].image)
-            .apply(RequestOptions().placeholder(R.drawable.placeholder
+        holder.phone.text = "Num : "+data[position].phone
+        Glide.with(context).load(url +data[position].image)
+            .apply(
+                RequestOptions().placeholder(R.drawable.placeholder
             ))
             .into(holder.img)
 
@@ -44,16 +51,6 @@ class MyAdapter(val context: Context,var data:List<Doctor>):RecyclerView.Adapter
             }
         })
 
-        /*holder.localisation.setOnClickListener(View.OnClickListener{
-            val latitude = data[position].lat
-            val longitude = data[position].lng
-            val geoLocation = Uri.parse("geo:$latitude,$longitude")
-            val intent = Intent(Intent.ACTION_VIEW,geoLocation)
-            if (intent.resolveActivity(context.packageManager) != null) {
-                context.startActivity(intent)
-            }
-        })*/
-
         holder.itemView.setOnClickListener(View.OnClickListener{
             val intent = Intent(context, medcinDetails::class.java)
             intent.putExtra("Dr",data[position])
@@ -61,14 +58,22 @@ class MyAdapter(val context: Context,var data:List<Doctor>):RecyclerView.Adapter
         })
 
     }
+
+    fun setListDoctors(list: List<Doctor>) {
+        data = list
+        notifyDataSetChanged()
+
+    }
+
 }
 
-class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+class DoctorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val img = view.findViewById<ImageView>(R.id.doctorImage)
     val name = view.findViewById<TextView>(R.id.viewName)
     val lastName = view.findViewById<TextView>(R.id.viewLastName)
     val phone = view.findViewById<TextView>(R.id.viewPhone)
 
 
-}
 
+}

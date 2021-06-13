@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_treatment_selector"
-        android:title="@string/title_treatments" />
+        android:icon="@drawable/ic_doctor_selector"
+        android:title="@string/title_medecins" />
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_doctor_selector"
-        android:title="@string/title_medecins" />
+        android:icon="@drawable/ic_treatment_selector"
+        android:title="@string/title_treatments" />
 
     <item
         android:id="@+id/navigation_notifications"
