@@ -18,7 +18,7 @@ connection.connect();
 
 //******************************************************** PATIENT SERVICE ****************************************************/
 
-// get all doctors 
+// get all patients 
 app.get('/patient',function(req,res){  
     var query = "select * from patients";
     connection.query(query,function(error,results){
@@ -344,6 +344,23 @@ app.post('/doctorAuth',function(req,res){
 
 });
 
+// get the doctors of a given specilaity (give the id in parameters)
+app.get('/doctorsBySpeciality/:idSpeciality', function(req,res){  
+    console.log(req.params.idSpeciality); 
+    var query = "select * from doctors natural join specialities where specialityId=?";
+    connection.query(query,[req.params.idSpeciality],function(error,results){
+        if (error) { 
+            throw(error) 
+        } else {
+            if (results.length==0){
+                res.send(JSON.stringify("Sorry to disappoint, but no doctors in this speciality 😅"));
+            }else {
+                res.send(JSON.stringify(results));
+            }
+        }
+    })
+});
+
 //******************************************************** SPECIALITY SERVICE ************************************************/
 // get all specialities 
 app.get('/speciality',function(req,res){  
@@ -357,8 +374,24 @@ app.get('/speciality',function(req,res){
     })
 });
 
+// get speciality by id 
+app.get('/speciality/:id',function(req,res){  
+    var query = "select * from specialities where specialityId=?";
+    connection.query(query,[req.params.id],function(error,results){
+        if (error) { 
+            throw(error) 
+        }else{
+            if (results.length==0){
+                res.send(JSON.stringify("No speciality for this Id 🙄, you probably entered it wrong"));
+            }else {
+                res.send(JSON.stringify(results));
+            }
+        }
+    })
+});
+
 //******************************************************** disease SERVICE ************************************************/
-// get all specialities 
+// get all diseases 
 app.get('/disease',function(req,res){  
     var query = "select * from disease";
     connection.query(query,function(error,results){
@@ -366,6 +399,22 @@ app.get('/disease',function(req,res){
             throw(error) 
         }else{
             res.send(JSON.stringify(results));
+        }
+    })
+});
+
+// get disease by id 
+app.get('/disease/:id',function(req,res){  
+    var query = "select * from disease where idDisease=?";
+    connection.query(query,[req.params.id],function(error,results){
+        if (error) { 
+            throw(error) 
+        }else{
+            if (results.length==0){
+                res.send(JSON.stringify("No disease for this Id 🙄, you probably entered it wrong"));
+            }else {
+                res.send(JSON.stringify(results));
+            }
         }
     })
 });
