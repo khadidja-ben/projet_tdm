@@ -214,13 +214,12 @@ app.get('/bookingExiste',function(req,res){
 
 // add booking  
 app.post('/booking',function(req,res){ 
-    var query = "INSERT  INTO bookings (bookingDate, bookingTime, idPatient, idDoctor, idTreatment) VALUES (?,?,?,?,?)";
+    var query = "INSERT  INTO bookings (bookingDate, bookingTime, idPatient, idDoctor) VALUES (?,?,?,?)";
     connection.query(query,[
         req.body.bookingDate, 
         req.body.bookingTime, 
         req.body.idPatient,
         req.body.idDoctor, 
-        req.body.idTreatment
     ],function(error,results){
     
     if(error) {
@@ -232,6 +231,37 @@ app.post('/booking',function(req,res){
     })  
 });
 
+// add treatment  
+app.post('/treatment',function(req,res){ 
+    var query = "INSERT  INTO treatments (treatmentBeginDate,treatmentEndDate, idDisease, treatmentDescription) VALUES (?,?,?,?)";
+    connection.query(query,[
+        req.body.treatmentBeginDate, 
+        req.body.treatmentEndDate, 
+        req.body.idDisease,
+        req.body.treatmentDescription, 
+    ],function(error,results){
+    
+    if(error) {
+       next(error) 
+    }
+    else {
+            res.send(JSON.stringify('treatment added successfully 💜'));
+        }
+    })  
+});
+
+//update booking with treatment id 
+app.put('/bookingTreatment', function(req,res){
+    var query = "UPDATE bookings set idTreatment = ? where idBooking = ?"; 
+    connection.query(query, [req.body.idTreatment, req.body.idBooking], function(error, results){
+        if (error){
+            next(error)
+        }
+        else {
+            res.send(JSON.stringify('Booking updated successfully with the treatment associated 💜'));
+        }
+    })
+})
 //*************************************************** treatments SERVICE *****************************************************/
 
 // get all the current treatments of a doctor (id given in parametres)
@@ -258,7 +288,7 @@ app.get('/currentTreatmentsPatient/:idPatient',function(req,res){
     var currentDate = new Date();
     //console.log(currentDate.toISOString().slice(0,10));
 
-    var query = "select * from treatments natural join bookings natural join patients where treatmentEndDate >= ? and idPatient=?";
+    var query = "select * from treatments natural join bookings natural join patients natural join disease where treatmentEndDate >= ? and idPatient=?";
     connection.query(query,[currentDate,req.params.idPatient],function(error,results){
     if (error) { 
         throw(error) 
