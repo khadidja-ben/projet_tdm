@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Treatment
+import com.example.projet_tdm.ui.treatment.TreatmentsViewModel
 import com.example.projet_tdm.ui.treatment.treatment_details
 
-class TreatmentAdapter (val context: Context, val treatmentsList: List<Treatment>):
+class TreatmentAdapter (val context: Context, val treatmentsList: List<Treatment>, val vm: TreatmentsViewModel):
     RecyclerView.Adapter<TreatmentViewHolder>() {
 
     //var treatmentsList = listOf<Treatment>()
@@ -30,14 +32,13 @@ class TreatmentAdapter (val context: Context, val treatmentsList: List<Treatment
         holder.maladie.text = treatmentsList[position].disease
         holder.dateDebut.text = treatmentsList[position].treatmentBeginDate.toString()
         holder.dateFin.text = treatmentsList[position].treatmentEndDate.toString()
-        holder.doctor.text = treatmentsList[position].doctor
+        holder.doctor.text = treatmentsList[position].idDoctor.toString()
 
-        /*holder.itemView.setOnClickListener(View.OnClickListener{
-            val intent = Intent(context, treatments_details::class.java)
-            intent.putExtra("Dr",treatmentsList[position])
-            context.startActivity(intent)
-        })*/
+        holder.itemView.setOnClickListener(View.OnClickListener{
+            vm.tr = treatmentsList[position]
+            holder.itemView.findNavController()?.navigate(R.id.action_navigation_dashboard_to_treatment_details)
 
+        })
     }
 
     /*fun setListTreatments(list: List<Treatment>) {

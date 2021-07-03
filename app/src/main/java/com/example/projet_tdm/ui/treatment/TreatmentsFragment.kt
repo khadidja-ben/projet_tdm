@@ -22,10 +22,6 @@ import java.util.*
 
 class TreatmentsFragment : Fragment() {
 
-  companion object {
-    fun newInstance() = TreatmentsFragment()
-  }
-
   //lateinit var adapterTreatment: TreatmentAdapter
   lateinit var TreatmentsviewModel: TreatmentsViewModel
 
@@ -54,18 +50,18 @@ class TreatmentsFragment : Fragment() {
       override fun onResponse(call: Call<List<Treatment>>, response: Response<List<Treatment>>) {
         if(response.isSuccessful){
           val list = response.body()
-          val data = mutableListOf<Treatment>()
+          //val data = mutableListOf<Treatment>()
           if(list != null){
             showTreatments(list)
-            Toast.makeText(activity, "success!", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, "success!", Toast.LENGTH_SHORT).show()
           }
         } else{
-          Toast.makeText(activity, "Une erreur response is not successful!", Toast.LENGTH_LONG).show()
+          Toast.makeText(activity, "Une erreur response is not successful!", Toast.LENGTH_SHORT).show()
         }
       }
 
       override fun onFailure(call: Call<List<Treatment>>, t: Throwable) {
-        Toast.makeText(activity, "Une erreur s'est produite onFailure!", Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, "Une erreur s'est produite onFailure!", Toast.LENGTH_SHORT).show()
       }
 
     })
@@ -74,7 +70,8 @@ class TreatmentsFragment : Fragment() {
   fun showTreatments(list: List<Treatment>){
     treatRecyclerView.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-    treatRecyclerView.adapter = TreatmentAdapter(requireActivity(), list)
+    treatRecyclerView.adapter = TreatmentAdapter(requireActivity(), list, TreatmentsviewModel)
+    TreatmentsviewModel.updateActionBarTitle("Details de traitement")
   }
 }
 

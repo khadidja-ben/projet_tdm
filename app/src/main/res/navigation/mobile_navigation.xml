@@ -15,11 +15,19 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.example.projet_tdm.ui.treatment.TreatmentsFragment"
         android:label="@string/title_treatments "
-        tools:layout="@layout/fragment_treatments" />
+        tools:layout="@layout/fragment_treatments" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_treatment_details"
+            app:destination="@id/treatment_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.projet_tdm.ui.profil.ProfilFragment"
         android:label="@string/title_profil"
         tools:layout="@layout/fragment_profil" />
+    <fragment
+        android:id="@+id/treatment_details"
+        android:name="com.example.projet_tdm.ui.treatment.treatment_details"
+        android:label="treatment_details" />
 </navigation>
