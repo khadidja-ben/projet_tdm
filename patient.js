@@ -231,7 +231,7 @@ app.post('/booking',function(req,res){
     })  
 });
 
-// add treatment  
+// add treatment and associate it the booking
 app.post('/treatment',function(req,res){ 
     var query = "INSERT  INTO treatments (treatmentBeginDate,treatmentEndDate, idDisease, treatmentDescription) VALUES (?,?,?,?)";
     connection.query(query,[
@@ -240,12 +240,19 @@ app.post('/treatment',function(req,res){
         req.body.idDisease,
         req.body.treatmentDescription, 
     ],function(error,results){
-    
+
+        var query1 = "UPDATE bookings set idTreatment = ? where idBooking = ?"; 
+        connection.query(query1, [results.insertId, req.body.idBooking], function(error1, results1){
+            if (error1){
+                next(error1)
+            }
+        })
+
     if(error) {
        next(error) 
     }
     else {
-            res.send(JSON.stringify('treatment added successfully 💜'));
+            res.send(JSON.stringify('treatment added successfully and associated to the Booking💜'));
         }
     })  
 });
