@@ -12,8 +12,6 @@ import com.example.projet_tdm.R
 
 class ProfilFragment : Fragment() {
 
-
-
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,

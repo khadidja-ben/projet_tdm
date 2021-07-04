@@ -28,14 +28,14 @@ class medcinDetails : AppCompatActivity() {
         val exp = findViewById<TextView>(R.id.exp)
 
         //img.setImageResource(doctor.image)
-        Glide.with(this).load(url +doctor.image)
+        Glide.with(this).load(url +doctor.imageDoctor)
             .apply(RequestOptions().placeholder(R.drawable.placeholder)).into(img)
-        nom.setText(doctor.name)
-        prenom.setText(doctor.lastName)
-        phone.setText(doctor.phone)
-        speciality.setText(doctor.speciality)
-        fb.setText(doctor.fb)
-        exp.setText(doctor.exp.toString())
+        nom.setText(doctor.nameDoctor)
+        prenom.setText(doctor.lastNameDoctor)
+        phone.setText(doctor.phoneDoctor)
+        speciality.setText(doctor.specialityId)
+        fb.setText(doctor.fbDoctor)
+        exp.setText(doctor.expDoctor.toString())
 
         conseil.setOnClickListener(){
             val intent = Intent(this, DemandeConseil::class.java)

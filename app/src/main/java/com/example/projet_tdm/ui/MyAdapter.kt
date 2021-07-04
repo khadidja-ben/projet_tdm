@@ -25,11 +25,11 @@ class MyAdapter(val context: Context,var data:List<Doctor>):RecyclerView.Adapter
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.name.text = data[position].name
-        holder.lastName.text = data[position].lastName
-        holder.phone.text = data[position].phone
+        holder.name.text = data[position].nameDoctor
+        holder.lastName.text = data[position].lastNameDoctor
+        holder.phone.text = data[position].phoneDoctor
 
-        Glide.with(context).load(url+data[position].image)
+        Glide.with(context).load(url+data[position].imageDoctor)
             .apply(RequestOptions().placeholder(R.drawable.placeholder
             ))
             .into(holder.img)

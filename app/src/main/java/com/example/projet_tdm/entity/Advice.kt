@@ -13,5 +13,5 @@ data class Advice(var idPatient:Int,
                   ) :Serializable {
                       @PrimaryKey(autoGenerate = true)
                       @ColumnInfo(name = "advice_id")
-                      var idAdvice: Int?=null
+                      var idAdvice: Int=0
                   }

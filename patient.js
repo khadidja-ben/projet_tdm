@@ -65,13 +65,18 @@ app.post('/patient',function(req,res){
 });
 
 // authentification for a patient (using the hashing function md5)
-app.post('/patientAuth',function(req,res){  
-    var query = "select * from authpatient where phone=? and password=?";
-    connection.query(query,[req.body.phone,req.body.pwd],function(error,results){
+app.get('/patientAuth/:phone/:pwd',function(req,res){  
+    var query = "select * from authpatient natural join patients where phonePatient=? and password=?";
+    connection.query(query,[req.params.phone,req.params.pwd],function(error,results){
+
         if (error) { 
             throw(error) 
         }else{
-            res.send(JSON.stringify(results));
+            //console.log(results); 
+            if(results.length>0) {
+                data = results[0]
+            }
+            res.send(JSON.stringify(data));
         }
     })
 
@@ -295,7 +300,7 @@ app.get('/currentTreatmentsPatient/:idPatient',function(req,res){
     var currentDate = new Date();
     //console.log(currentDate.toISOString().slice(0,10));
 
-    var query = "select * from treatments natural join bookings natural join patients natural join disease where treatmentEndDate >= ? and idPatient=?";
+    var query = "select * from ((((treatments inner join bookings on bookings.idTreatment = treatments.idTreatment) inner join patients on patients.idPatient = bookings.idPatient) inner join disease on treatments.idDisease = disease.idDisease) inner join doctors on bookings.idDoctor = doctors.idDoctor) where treatments.treatmentEndDate >= ? and bookings.idPatient=?";
     connection.query(query,[currentDate,req.params.idPatient],function(error,results){
     if (error) { 
         throw(error) 
@@ -389,11 +394,12 @@ app.get('/doctorsBySpeciality/:idSpeciality', function(req,res){
         if (error) { 
             throw(error) 
         } else {
-            if (results.length==0){
-                res.send(JSON.stringify("Sorry to disappoint, but no doctors in this speciality 😅"));
+            res.send(JSON.stringify(results));
+            /*if (results.length==0){
+                
             }else {
                 res.send(JSON.stringify(results));
-            }
+            }*/
         }
     })
 });

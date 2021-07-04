@@ -32,10 +32,10 @@ class DoctorAdapter(val context: Context) :
 
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
 
-        holder.name.text = data[position].name
-        holder.lastName.text = data[position].lastName
-        holder.phone.text = "Num : "+data[position].phone
-        Glide.with(context).load(url +data[position].image)
+        holder.name.text = data[position].nameDoctor
+        holder.lastName.text = data[position].lastNameDoctor
+        holder.phone.text = "Num : "+data[position].phoneDoctor
+        Glide.with(context).load(url +data[position].imageDoctor)
             .apply(
                 RequestOptions().placeholder(R.drawable.placeholder
             ))

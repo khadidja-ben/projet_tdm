@@ -1,14 +1,24 @@
 package com.example.projet_tdm.entity
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.Serializable
 
-data class Doctor(val idDoctor: Int,
-                  val name:String,
-                  val lastName:String,
-                  val phone: String,
-                  val speciality: Int,
-                  val image:String,
-                  val lat: Int,
-                  val lng: Int,
-                  val exp : Int,
-                  val fb : String) :Serializable
+@Entity(tableName = "doctors")
+data class Doctor(var idDoctor: Int,
+                  var nameDoctor:String,
+                  var lastNameDoctor:String,
+                  var phoneDoctor: String,
+                  var specialityId: Int,
+                  var imageDoctor:String,
+                  var latDoctor: Float,
+                  var lngDoctor: Float,
+                  var expDoctor : Int,
+                  var fbDoctor : String,
+                  var speciality : String,
+                  var biographieDoctor : String) :Serializable {
+                      @PrimaryKey(autoGenerate = true)
+                      @ColumnInfo(name = "doctor_id")
+                      var idDoc: Int=0
+                  }

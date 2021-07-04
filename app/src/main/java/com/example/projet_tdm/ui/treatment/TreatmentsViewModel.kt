@@ -9,7 +9,6 @@ import java.util.*
 class TreatmentsViewModel : ViewModel() {
 
     var tr: Treatment = Treatment(
-        0,
         Date(),
         Date(),
         "",

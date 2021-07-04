@@ -13,7 +13,7 @@ tools:viewBindingIgnore="true">
     >
 
     <EditText
-        android:id="@+id/numChasis"
+        android:id="@+id/phone"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="30dp"
@@ -22,7 +22,7 @@ tools:viewBindingIgnore="true">
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/dirtyWhite"
         android:ems="10"
-        android:hint="Email"
+        android:hint="Numéro de téléphone"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,15 +37,15 @@ tools:viewBindingIgnore="true">
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
-        android:paddingHorizontal="20dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/dirtyWhite"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Mot de passe"
         android:inputType="textPassword"
+        android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numChasis" />
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
 
     <Button
         android:id="@+id/login_button"

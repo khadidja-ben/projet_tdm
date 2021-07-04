@@ -1,9 +1,7 @@
 package com.example.projet_tdm.retrofit
 
 
-import com.example.projet_tdm.entity.Advice
-import com.example.projet_tdm.entity.Doctor
-import com.example.projet_tdm.entity.Treatment
+import com.example.projet_tdm.entity.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Body
@@ -26,4 +24,13 @@ interface EndPoints {
 
     @GET("doctor/{id}")
     fun getDoctor(@Path("id") idDoctor: Int):Call<Doctor>
+
+    @GET("/patientAuth/{phone}/{password}")
+    fun authentification(@Path ("phone") phone:String, @Path("password")password: String): Call<Patient>
+
+    @GET("/speciality")
+    fun getSpecialities():Call<List<Speciality>>
+
+    @GET("doctorsBySpeciality/{idSpeciality}")
+    fun doctorsBySpeciality(@Path("idSpeciality") idSpeciality: Int):Call<List<Doctor>>
 }
