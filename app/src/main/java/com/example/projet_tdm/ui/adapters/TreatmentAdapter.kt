@@ -36,7 +36,7 @@ class TreatmentAdapter (val context: Context, val treatmentsList: List<Treatment
 
         holder.itemView.setOnClickListener(View.OnClickListener{
             vm.tr = treatmentsList[position]
-            holder.itemView.findNavController()?.navigate(R.id.action_navigation_dashboard_to_treatment_details)
+            //holder.itemView.findNavController()?.navigate(R.id.action_navigation_dashboard_to_treatment_details)
 
         })
     }

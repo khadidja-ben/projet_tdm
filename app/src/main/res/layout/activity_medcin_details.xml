@@ -7,92 +7,166 @@
     tools:context=".ui.medcinDetails">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/telephoneDoctor"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/green"
+        android:padding="20dp
+"
+        app:layout_constraintStart_toStartOf="@+id/specialityView"
+        app:layout_constraintTop_toBottomOf="@+id/specialityView"
+        tools:srcCompat="@drawable/ic_phone" />
+
+    <ImageView
+        android:id="@+id/localisationDoctor"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/yellow"
+        android:padding="20dp
+"
+        app:layout_constraintEnd_toStartOf="@+id/facebookDoctor"
+        app:layout_constraintStart_toEndOf="@+id/telephoneDoctor"
+        app:layout_constraintTop_toTopOf="@+id/telephoneDoctor"
+        tools:srcCompat="@drawable/ic_localisation" />
+
+    <ImageView
+        android:id="@+id/facebookDoctor"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/blue"
+        android:padding="20dp
+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/localisationDoctor"
+        tools:srcCompat="@drawable/ic_facebook" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="393dp"
+        android:layout_height="232dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        app:cardBackgroundColor="@color/LightGreen"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <TextView
-        android:id="@+id/prenomView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameView" />
-
-    <TextView
-        android:id="@+id/specialityView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PhoneView" />
-
-    <TextView
-        android:id="@+id/PhoneView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prenomView" />
+        android:textColor="@color/app_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/exp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:fontFamily="@font/montserrat"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebook" />
+        android:textColor="@color/app_black"
+        app:layout_constraintStart_toEndOf="@+id/specialityView"
+        app:layout_constraintTop_toTopOf="@+id/specialityView" />
 
     <TextView
-        android:id="@+id/facebook"
+        android:id="@+id/specialityView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/specialityView" />
+        android:textColor="@color/app_black"
+        app:layout_constraintStart_toStartOf="@+id/nameView"
+        app:layout_constraintTop_toBottomOf="@+id/nameView" />
 
     <Button
         android:id="@+id/conseil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/montserrat"
+        android:text="demande de conseil"
+        android:textColor="@color/app_black"
+        app:backgroundTint="@color/dirtyWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reserver" />
+
+    <Button
+        android:id="@+id/reserver"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="RESERVER"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bographieContent" />
+
+    <TextView
+        android:id="@+id/bographieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="demande de conseil"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exp" />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Biographie"
+        android:textColor="@color/app_black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/specialityView"
+        app:layout_constraintTop_toBottomOf="@+id/telephoneDoctor" />
+
+    <TextView
+        android:id="@+id/bographieContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="TextView"
+        android:textColor="@color/app_black"
+        app:layout_constraintStart_toStartOf="@+id/bographieTitle"
+        app:layout_constraintTop_toBottomOf="@+id/bographieTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

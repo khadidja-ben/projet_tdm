@@ -17,7 +17,7 @@ class medcinDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medcin_details)
 
-        val doctor= intent.getSerializableExtra("Dr") as Doctor
+        /*val doctor= intent.getSerializableExtra("Dr") as Doctor
 
         val img = findViewById<ImageView>(R.id.imageView3)
         val nom = findViewById<TextView>(R.id.nameView)
@@ -35,12 +35,12 @@ class medcinDetails : AppCompatActivity() {
         phone.setText(doctor.phoneDoctor)
         speciality.setText(doctor.specialityId)
         fb.setText(doctor.fbDoctor)
-        exp.setText(doctor.expDoctor.toString())
+        exp.setText(doctor.expDoctor.toString())*/
 
         conseil.setOnClickListener(){
             val intent = Intent(this, DemandeConseil::class.java)
-            intent.putExtra("Dr",doctor)
-            this.startActivity(intent)
+           // intent.putExtra("Dr",doctor)
+            //this.startActivity(intent)
         }
     }
 }

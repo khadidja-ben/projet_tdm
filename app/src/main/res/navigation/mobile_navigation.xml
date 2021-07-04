@@ -3,31 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_doctors">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_doctors"
         android:name="com.example.projet_tdm.ui.doctors.DoctorsFragment"
         android:label="@string/title_medecins"
         tools:layout="@layout/fragment_doctors" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_treatments"
         android:name="com.example.projet_tdm.ui.treatment.TreatmentsFragment"
-        android:label="@string/title_treatments "
+        android:label="@string/title_treatments"
         tools:layout="@layout/fragment_treatments" >
-        <action
-            android:id="@+id/action_navigation_dashboard_to_treatment_details"
-            app:destination="@id/treatment_details" />
+
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_profil"
         android:name="com.example.projet_tdm.ui.profil.ProfilFragment"
         android:label="@string/title_profil"
         tools:layout="@layout/fragment_profil" />
+
     <fragment
-        android:id="@+id/treatment_details"
-        android:name="com.example.projet_tdm.ui.treatment.treatment_details"
-        android:label="treatment_details" />
+        android:id="@+id/navigation_agenda"
+        android:name="com.example.projet_tdm.BookAppointmentFragment"
+        android:label="@string/title_medecins"
+        tools:layout="@layout/fragment_book_appointment" />
+
 </navigation>

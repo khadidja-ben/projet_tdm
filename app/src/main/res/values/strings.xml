@@ -3,6 +3,7 @@
     <string name="title_treatments">Traitements</string>
     <string name="title_medecins">Medecins</string>
     <string name="title_profil">Profil</string>
+    <string name="title_agenda">Agenda</string>
     <string name="title_activity_medecin">MedecinActivity</string>
     <string name="title_activity_patient">PatientActivity</string>
     <!-- Strings used for fragments for navigation -->
