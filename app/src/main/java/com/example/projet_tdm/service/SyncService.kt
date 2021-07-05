@@ -3,6 +3,7 @@ package com.example.projet_tdm.service
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.widget.Toast
 import androidx.work.ListenableWorker
 import androidx.work.WorkerParameters
 import androidx.work.impl.utils.futures.SettableFuture
@@ -19,8 +20,6 @@ class SyncService(val ctx: Context, val workParamters: WorkerParameters):Listena
 
     lateinit var  future:SettableFuture<Result>
 
-
-
     override fun startWork(): ListenableFuture<Result> {
 
         future = SettableFuture.create()
@@ -34,7 +33,7 @@ class SyncService(val ctx: Context, val workParamters: WorkerParameters):Listena
     result.enqueue(object: Callback<String> {
 
         override fun onFailure(call: Call<String>?, t: Throwable?) {
-          future.set(Result.retry())
+            future.set(Result.retry())
         }
 
         override fun onResponse(call: Call<String>?, response: Response<String>?) {

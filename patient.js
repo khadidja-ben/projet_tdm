@@ -237,12 +237,19 @@ app.get('/booking/:bookingDate/:bookingTime/:idPatient/:idDoctor',function(req,r
         req.params.idPatient,
         req.params.idDoctor, 
     ],function(error,results){
+         
+        var query1 = "UPDATE bookings set codeQR = ? where idBooking = ?"; 
+        connection.query(query1, [results.insertId.toString().concat(req.params.idPatient.toString()).concat(req.params.idDoctor.toString()), results.insertId], function(error1, results1){
+            if(error1){
+                next(error1)
+            }
+        })
     
     if(error) {
        next(error) 
     }
     else {
-    res.send(JSON.stringify('booking added successfully 💜'));
+        res.send(JSON.stringify('booking added successfully 💜'));
         }
     })  
 });

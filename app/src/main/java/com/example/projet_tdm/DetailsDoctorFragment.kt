@@ -77,7 +77,10 @@ class DetailsDoctorFragment : Fragment() {
 
         }
         conseil.setOnClickListener(){
-            it.findNavController()?.navigate(R.id.action_detailsDoctorFragment_to_adviceFragment)
+            //it.findNavController()?.navigate(R.id.action_detailsDoctorFragment_to_adviceFragment)
+            val intent = Intent(requireActivity(),DemandeConseil::class.java)
+            intent.putExtra("Dr",doctor)
+            this.startActivity(intent)
 
         }
 
