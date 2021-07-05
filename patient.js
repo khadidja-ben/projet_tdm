@@ -72,7 +72,6 @@ app.get('/patientAuth/:phone/:pwd',function(req,res){
         if (error) { 
             throw(error) 
         }else{
-            //console.log(results); 
             if(results.length>0) {
                 data = results[0]
             }
@@ -198,6 +197,18 @@ app.get('/booking/:id',function(req,res){
     })
 });
 
+// get booking of a day
+app.get('/bookingTime/:bookingDate', function(req, res){
+    var query = "select bookingTime from bookings where bookingDate=?"; 
+    connection.query(query, [req.params.bookingDate], function(error, results){
+        if(error) {
+            throw(error)
+        } else{
+            res.send(JSON.stringify(results));
+        }
+    })
+}) 
+
 // check if a booking already exists by testing if the date and time given by the user already exists 
 app.get('/bookingExiste',function(req,res){  
     var query = "select bookingDate, bookingTime from bookings where bookingDate=? and bookingTime=?";
@@ -218,13 +229,13 @@ app.get('/bookingExiste',function(req,res){
 });
 
 // add booking  
-app.post('/booking',function(req,res){ 
+app.get('/booking/:bookingDate/:bookingTime/:idPatient/:idDoctor',function(req,res){ 
     var query = "INSERT  INTO bookings (bookingDate, bookingTime, idPatient, idDoctor) VALUES (?,?,?,?)";
     connection.query(query,[
-        req.body.bookingDate, 
-        req.body.bookingTime, 
-        req.body.idPatient,
-        req.body.idDoctor, 
+        req.params.bookingDate, 
+        req.params.bookingTime, 
+        req.params.idPatient,
+        req.params.idDoctor, 
     ],function(error,results){
     
     if(error) {
@@ -369,18 +380,19 @@ app.post('/doctor',function(req,res){
 
 
 // authentification for a doctor (using the hashing function md5)
-app.post('/doctorAuth',function(req,res){  
-    var query = "select * from authdoctor where phone=? and password=?";
+app.get('/doctorAuth/:phone/:pwd',function(req,res){  
+    var query = "select * from authdoctor natural join doctors where phoneDoctor=? and password=?";
 
-    //console.log(req.body.phone)
-    //console.log(req.body.pwd)
-    //console.log(md5(req.body.pwd))
-
-    connection.query(query,[req.body.phone, req.body.pwd],function(error,results){
+    connection.query(query,[req.params.phone, req.params.pwd],function(error,results){
         if (error) { 
             throw(error) 
         }else{
-            res.send(JSON.stringify(results));
+            if(results.length>0) {
+                data = results[0]
+            }
+            console.log(results)
+            console.log(data)
+            res.send(JSON.stringify(data));
         }
     })
 

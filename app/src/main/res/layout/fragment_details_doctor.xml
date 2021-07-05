@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.medcinDetails">
+    tools:context=".DetailsDoctorFragment">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <ImageView
         android:id="@+id/telephoneDoctor"
         android:layout_width="67dp"
@@ -15,8 +18,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/green"
-        android:padding="20dp
-"
+        android:padding="20dp"
         app:layout_constraintStart_toStartOf="@+id/specialityView"
         app:layout_constraintTop_toBottomOf="@+id/specialityView"
         tools:srcCompat="@drawable/ic_phone" />
@@ -27,8 +29,7 @@
         android:layout_height="67dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/yellow"
-        android:padding="20dp
-"
+        android:padding="20dp"
         app:layout_constraintEnd_toStartOf="@+id/facebookDoctor"
         app:layout_constraintStart_toEndOf="@+id/telephoneDoctor"
         app:layout_constraintTop_toTopOf="@+id/telephoneDoctor"
@@ -42,8 +43,7 @@
         android:layout_marginRight="50dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/blue"
-        android:padding="20dp
-"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/localisationDoctor"
         tools:srcCompat="@drawable/ic_facebook" />
@@ -77,14 +77,14 @@
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="TextView"
         android:textColor="@color/app_black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
@@ -119,11 +119,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/montserrat"
         android:text="demande de conseil"
         android:textColor="@color/app_black"
         app:backgroundTint="@color/dirtyWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +146,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bographieContent" />
+        app:layout_constraintTop_toBottomOf="@+id/biographieContent" />
 
     <TextView
         android:id="@+id/bographieTitle"
@@ -159,10 +161,10 @@
         app:layout_constraintTop_toBottomOf="@+id/telephoneDoctor" />
 
     <TextView
-        android:id="@+id/bographieContent"
+        android:id="@+id/biographieContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
         android:textColor="@color/app_black"
@@ -170,3 +172,4 @@
         app:layout_constraintTop_toBottomOf="@+id/bographieTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>

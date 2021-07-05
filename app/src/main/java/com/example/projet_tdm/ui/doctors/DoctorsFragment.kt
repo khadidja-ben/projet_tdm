@@ -41,7 +41,7 @@ class DoctorsFragment : Fragment() {
     super.onActivityCreated(savedInstanceState)
     val vm = ViewModelProvider(requireActivity()).get(DoctorViewModel::class.java)
 
-    adapterDoctors = DoctorAdapter(requireActivity())
+    adapterDoctors = DoctorAdapter(requireActivity(),vm)
     tasksRecyclerView.layoutManager =
       LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
     tasksRecyclerView.adapter = adapterDoctors

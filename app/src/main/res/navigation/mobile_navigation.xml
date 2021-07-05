@@ -9,7 +9,14 @@
         android:id="@+id/navigation_doctors"
         android:name="com.example.projet_tdm.ui.doctors.DoctorsFragment"
         android:label="@string/title_medecins"
-        tools:layout="@layout/fragment_doctors" />
+        tools:layout="@layout/fragment_doctors" >
+        <action
+            android:id="@+id/action_navigation_doctors_to_medcinDetails"
+            app:destination="@+id/detailsDoctorFragment" />
+        <action
+            android:id="@+id/action_navigation_doctors_to_detailsDoctorFragment"
+            app:destination="@id/detailsDoctorFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_treatments"
@@ -30,5 +37,22 @@
         android:name="com.example.projet_tdm.BookAppointmentFragment"
         android:label="@string/title_medecins"
         tools:layout="@layout/fragment_book_appointment" />
+    <fragment
+        android:id="@+id/detailsDoctorFragment"
+        android:name="com.example.projet_tdm.DetailsDoctorFragment"
+        android:label="fragment_details_doctor"
+        tools:layout="@layout/fragment_details_doctor" >
+        <action
+            android:id="@+id/action_detailsDoctorFragment_to_navigation_agenda"
+            app:destination="@id/navigation_agenda" />
+        <action
+            android:id="@+id/action_detailsDoctorFragment_to_adviceFragment"
+            app:destination="@id/adviceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adviceFragment"
+        android:name="com.example.projet_tdm.AdviceFragment"
+        android:label="fragment_advice"
+        tools:layout="@layout/fragment_advice" />
 
 </navigation>

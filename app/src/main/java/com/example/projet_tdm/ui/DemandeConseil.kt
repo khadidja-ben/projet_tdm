@@ -13,7 +13,6 @@ import com.example.projet_tdm.service.SyncService
 import kotlinx.android.synthetic.main.activity_demande_conseil.send
 import kotlinx.android.synthetic.main.activity_demande_conseil.conseilText
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_medcin_details.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

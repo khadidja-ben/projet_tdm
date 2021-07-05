@@ -28,8 +28,7 @@
         <activity android:name=".ui.OnBoardingScreens" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.AuthActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>
         <activity android:name=".ui.DemandeConseil"></activity>
-        <activity android:name=".ui.medcinDetails" />
-        <activity android:name=".ui.MainActivity"></activity>
+
 
 
     </application>

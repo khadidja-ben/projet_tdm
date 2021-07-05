@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Path
+import java.util.*
 
 interface EndPoints {
 
@@ -33,4 +34,10 @@ interface EndPoints {
 
     @GET("doctorsBySpeciality/{idSpeciality}")
     fun doctorsBySpeciality(@Path("idSpeciality") idSpeciality: Int):Call<List<Doctor>>
+
+    @GET("/bookingTime/{bookingDate}")
+    fun bookingTimes(@Path("bookingDate") bookingDate: String):Call<List<BookingTime>>
+
+    @GET("/booking/{bookingDate}/{bookingTime}/{idPatient}/{idDoctor}")
+    fun addBooking(@Path("bookingDate") bookingDate: String, @Path("bookingTime")bookingTime: String,@Path("idPatient") idPatient: Int, @Path("idDoctor")idDoctor: Int):Call<String>
 }

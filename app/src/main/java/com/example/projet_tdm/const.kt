@@ -1,3 +1,3 @@
 package com.example.projet_tdm
 
-const val url = "https://b30289b1e47d.ngrok.io/"
+const val url = "https://dfad5eaccd93.ngrok.io"

@@ -8,15 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Doctor
-import com.example.projet_tdm.ui.medcinDetails
+import com.example.projet_tdm.ui.doctors.DoctorViewModel
 import com.example.projet_tdm.url
 
-class DoctorAdapter(val context: Context) :
+class DoctorAdapter(val context: Context, val vm: DoctorViewModel) :
     RecyclerView.Adapter<DoctorViewHolder>() {
 
     var data = listOf<Doctor>()
@@ -52,9 +53,8 @@ class DoctorAdapter(val context: Context) :
         })
 
         holder.itemView.setOnClickListener(View.OnClickListener{
-            val intent = Intent(context, medcinDetails::class.java)
-            intent.putExtra("Dr",data[position])
-            context.startActivity(intent)
+            vm.dr = data[position]
+            holder.itemView.findNavController()?.navigate(R.id.action_navigation_doctors_to_detailsDoctorFragment)
         })
 
     }
