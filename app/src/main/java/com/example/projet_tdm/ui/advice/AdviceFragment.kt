@@ -1,25 +1,19 @@
-package com.example.projet_tdm
+package com.example.projet_tdm.ui.advice
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.work.*
+import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Advice
-import com.example.projet_tdm.entity.Doctor
-import com.example.projet_tdm.retrofit.RetrofitService
 import com.example.projet_tdm.roomdao.RoomService
 import com.example.projet_tdm.service.SyncService
 import com.example.projet_tdm.ui.doctors.DoctorViewModel
-import com.example.projet_tdm.ui.treatment.TreatmentsViewModel
-import kotlinx.android.synthetic.main.activity_demande_conseil.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.android.synthetic.main.fragment_advice.*
 
 class AdviceFragment : Fragment() {
 
@@ -34,11 +28,16 @@ class AdviceFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         val vm = ViewModelProvider(requireActivity()).get(DoctorViewModel::class.java)
         val doctor= vm.dr
 
         send.setOnClickListener(){
-            val conseil = Advice(1, doctor.idDoctor, conseilText.text.toString())
+
+            val pref = requireActivity().getSharedPreferences("myPrefs", AppCompatActivity.MODE_PRIVATE)
+            val id = pref.getInt("idPatient", 1)
+
+            val conseil = Advice(id, doctor.idDoctor, conseilText.text.toString(),0)
             RoomService.appDataBase.getAdviceDao().addAdvice(conseil)
             conseilText.text.clear()
             scheduleSycn()

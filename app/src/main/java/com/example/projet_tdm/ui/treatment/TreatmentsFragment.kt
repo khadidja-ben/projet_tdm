@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,9 @@ import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Doctor
 import com.example.projet_tdm.entity.Treatment
 import com.example.projet_tdm.retrofit.RetrofitService
+import com.example.projet_tdm.roomdao.RoomService
 import com.example.projet_tdm.ui.adapters.TreatmentAdapter
+import kotlinx.android.synthetic.main.fragment_profil.*
 import kotlinx.android.synthetic.main.fragment_treatments.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,10 +43,14 @@ class TreatmentsFragment : Fragment() {
     TreatmentsviewModel = ViewModelProvider(requireActivity()).get(TreatmentsViewModel::class.java)
     //adapterTreatment = TreatmentAdapter(requireActivity())
 
-    getTreatments(1)
+    val pref = requireActivity().getSharedPreferences("myPrefs", AppCompatActivity.MODE_PRIVATE)
+    val id = pref.getInt("idPatient", 1)
+    getTreatments(id)
+    getTreatmentFromRoom()
   }
 
   fun getTreatments(idPatient: Int){
+    //val advices = RoomService.appDataBase.getAdviceDao().getAdvicesToSynchronize()
     val call = RetrofitService.endpoint.getCurrentTreatments(idPatient)
     call.enqueue(object : Callback<List<Treatment>>{
 
@@ -52,7 +59,10 @@ class TreatmentsFragment : Fragment() {
           val list = response.body()
           //val data = mutableListOf<Treatment>()
           if(list != null){
-            showTreatments(list)
+            for (treatment in list){
+              RoomService.appDataBase.daoTreatments().insertTreatment(treatment)
+            }
+
             Toast.makeText(activity, "success!", Toast.LENGTH_SHORT).show()
           }
         } else{
@@ -65,6 +75,13 @@ class TreatmentsFragment : Fragment() {
       }
 
     })
+
+  }
+  fun getTreatmentFromRoom(){
+    RoomService.appDataBase.daoTreatments().getTreatments().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+      showTreatments(it)
+    } )
+
   }
 
   fun showTreatments(list: List<Treatment>){

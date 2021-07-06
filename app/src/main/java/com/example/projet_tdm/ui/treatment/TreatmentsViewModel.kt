@@ -14,8 +14,10 @@ class TreatmentsViewModel : ViewModel() {
         "",
         0,
         "",
+        "",
         0,
         "",
+        ""
     )
 
     private val _text = MutableLiveData<String>().apply {

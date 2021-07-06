@@ -66,7 +66,8 @@ app.post('/patient',function(req,res){
 
 // authentification for a patient (using the hashing function md5)
 app.get('/patientAuth/:phone/:pwd',function(req,res){  
-    var query = "select * from authpatient natural join patients where phonePatient=? and password=?";
+    var data = Object() 
+    var query = "select * from authpatient natural join patients where authpatient.phonePatient=? and authpatient.password=?";
     connection.query(query,[req.params.phone,req.params.pwd],function(error,results){
 
         if (error) { 
@@ -158,9 +159,9 @@ app.get('/booking',function(req,res){
 });
 
 // get all bookings of a doctor (given id in parametres)
-app.get('/bookingDoctor/:idDoctor',function(req,res){ 
-    var query = "select * from  bookings natural join doctors where idDoctor=?"; 
-    connection.query(query,[req.params.idDoctor],function(error,results){
+app.get('/bookingDoctor/:idDoctor/:bookingDate',function(req,res){ 
+    var query = "select * from  bookings natural join doctors where idDoctor=? and bookingDate=?"; 
+    connection.query(query,[req.params.idDoctor, req.params.bookingDate],function(error,results){
         if (error) { 
             throw(error) 
         } else {
@@ -170,9 +171,9 @@ app.get('/bookingDoctor/:idDoctor',function(req,res){
 });
 
 // get all bookings of a patient (given id in parametres)
-app.get('/bookingPatient/:idPatient',function(req,res){ 
-    var query = "select * from  bookings natural join patients where idPatient=?"; 
-    connection.query(query,[req.params.idPatient],function(error,results){
+app.get('/bookingPatient/:idPatient/:bookingDate',function(req,res){ 
+    var query = "select * from  bookings natural join patients natural join doctors where idPatient=? and bookingDate=?"; 
+    connection.query(query,[req.params.idPatient, req.params.bookingDate],function(error,results){
         if (error) { 
             throw(error) 
         } else {

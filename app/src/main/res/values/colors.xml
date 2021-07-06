@@ -21,4 +21,7 @@
     <color name="textColorSecondary">#a8a8a8</color>
     <color name="green">#18f264</color>
     <color name="yellow">#f7e62a</color>
+    <color name="light_green">#83f7e9</color>
+    <color name="anotherGreen">#63DDD1</color>
+
 </resources>

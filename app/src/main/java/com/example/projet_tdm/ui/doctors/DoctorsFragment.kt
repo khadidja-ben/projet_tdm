@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Doctor
 import com.example.projet_tdm.entity.Speciality
@@ -16,6 +19,7 @@ import com.example.projet_tdm.retrofit.RetrofitService
 import com.example.projet_tdm.ui.adapters.DoctorAdapter
 import com.example.projet_tdm.ui.adapters.SpecAdapter
 import com.example.projet_tdm.ui.adapters.TreatmentAdapter
+import com.example.projet_tdm.url
 import kotlinx.android.synthetic.main.fragment_doctors.*
 import kotlinx.android.synthetic.main.fragment_treatments.*
 import retrofit2.Call
@@ -40,6 +44,20 @@ class DoctorsFragment : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     val vm = ViewModelProvider(requireActivity()).get(DoctorViewModel::class.java)
+
+    val pref = requireActivity().getSharedPreferences("myPrefs", AppCompatActivity.MODE_PRIVATE)
+    var nomDocteur=pref.getString("namePatient", "")
+    var lastNameDocteur=pref.getString("lastNamePatient", "")
+    var imageDoctor=pref.getString("img", "")
+
+    nom.setText("Salut "+nomDocteur+" "+lastNameDocteur)
+
+    Glide.with(this).load(url +imageDoctor)
+      .apply(
+        RequestOptions().placeholder(R.drawable.placeholder
+        ))
+      .into(patientImage)
+
 
     adapterDoctors = DoctorAdapter(requireActivity(),vm)
     tasksRecyclerView.layoutManager =
@@ -119,12 +137,7 @@ class DoctorsFragment : Fragment() {
 
 
 
-    /*adapterDoctors.setListDoctors(listOf<Doctor>(
-            Doctor("Lilya","Beddek","067798900",1,"Image",12,12,12,"fb","zezezaezaeaeea"),
-            Doctor("Lilya","Beddek","067798900",1,"Image",12,12,12,"fb","zezezaezaeaeea"),
-            Doctor("Lilya","Beddek","067798900",1,"Image",12,12,12,"fb","zezezaezaeaeea"),
-            Doctor("Lilya","Beddek","067798900",1,"Image",12,12,12,"fb","zezezaezaeaeea"),
-            ))*/
+
 
   }
 

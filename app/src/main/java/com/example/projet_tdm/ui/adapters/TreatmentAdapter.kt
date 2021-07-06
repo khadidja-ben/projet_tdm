@@ -1,17 +1,15 @@
 package com.example.projet_tdm.ui.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Treatment
 import com.example.projet_tdm.ui.treatment.TreatmentsViewModel
-import com.example.projet_tdm.ui.treatment.treatment_details
+import java.text.SimpleDateFormat
 
 class TreatmentAdapter (val context: Context, val treatmentsList: List<Treatment>, val vm: TreatmentsViewModel):
     RecyclerView.Adapter<TreatmentViewHolder>() {
@@ -30,9 +28,15 @@ class TreatmentAdapter (val context: Context, val treatmentsList: List<Treatment
     override fun onBindViewHolder(holder: TreatmentViewHolder, position: Int) {
 
         holder.maladie.text = treatmentsList[position].disease
-        holder.dateDebut.text = treatmentsList[position].treatmentBeginDate.toString()
-        holder.dateFin.text = treatmentsList[position].treatmentEndDate.toString()
-        holder.doctor.text = treatmentsList[position].idDoctor.toString()
+
+        val sdf = SimpleDateFormat("yyyy-M-d")
+        var dateDebut: String=sdf.format(treatmentsList[position].treatmentBeginDate)
+        var dateFin: String=sdf.format(treatmentsList[position].treatmentEndDate)
+
+        holder.dateDebut.text = dateDebut
+        holder.dateFin.text = dateFin
+        holder.doctor.text = "Dr. "+treatmentsList[position].nameDoctor
+        holder.medicament.text = treatmentsList[position].medecin
 
         holder.itemView.setOnClickListener(View.OnClickListener{
             vm.tr = treatmentsList[position]
@@ -52,4 +56,5 @@ class TreatmentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val dateDebut = view.findViewById<TextView>(R.id.dateDebutView)
     val dateFin = view.findViewById<TextView>(R.id.dateFinView)
     val doctor = view.findViewById<TextView>(R.id.doctorView)
+    val medicament = view.findViewById<TextView>(R.id.medicament)
 }

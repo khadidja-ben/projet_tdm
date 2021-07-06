@@ -1,4 +1,4 @@
-package com.example.projet_tdm.ui
+package com.example.projet_tdm.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Patient
-import com.example.projet_tdm.entity.Treatment
 import com.example.projet_tdm.retrofit.RetrofitService
 import kotlinx.android.synthetic.main.activity_auth.*
 import retrofit2.Call
@@ -38,6 +37,11 @@ class AuthActivity : AppCompatActivity() {
                         val pref = applicationContext.getSharedPreferences("myPrefs", MODE_PRIVATE)
                         val editor = pref.edit()
                         editor.putBoolean("connected", true)
+                        editor.putInt("idPatient", res.idPatient)
+                        editor.putString("namePatient", res.namePatient)
+                        editor.putString("lastNamePatient", res.lastNamePatient)
+                        editor.putString("phone", res.phonePatient)
+                        editor.putString("img", res.imagePatient)
                         editor.commit()
                         val mainActivity = Intent(applicationContext, UserPatientActivity::class.java)
                         startActivity(mainActivity)

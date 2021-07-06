@@ -1,4 +1,4 @@
-package com.example.projet_tdm.ui
+package com.example.projet_tdm.entity
 
 class OnBoardingItem {
     var image = 0

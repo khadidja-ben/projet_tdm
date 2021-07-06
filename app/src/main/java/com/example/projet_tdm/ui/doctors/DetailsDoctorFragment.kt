@@ -1,4 +1,4 @@
-package com.example.projet_tdm
+package com.example.projet_tdm.ui.doctors
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -8,15 +8,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.projet_tdm.ui.DemandeConseil
-import com.example.projet_tdm.ui.doctors.DoctorViewModel
-import com.example.projet_tdm.ui.treatment.TreatmentsViewModel
+import com.example.projet_tdm.R
+import com.example.projet_tdm.url
 import kotlinx.android.synthetic.main.fragment_details_doctor.*
 
 class DetailsDoctorFragment : Fragment() {
@@ -37,7 +34,7 @@ class DetailsDoctorFragment : Fragment() {
                 .apply(RequestOptions().placeholder(R.drawable.placeholder)).into(imageDoctor)
         nameView.setText("Dr. "+doctor.nameDoctor+" "+doctor.lastNameDoctor)
         specialityView.setText(doctor.speciality)
-        exp.setText(doctor.expDoctor.toString())
+        exp.setText("Experience: "+doctor.expDoctor.toString()+ " ans")
         biographieContent.setText(doctor.biographieDoctor)
 
         telephoneDoctor.setOnClickListener(){
@@ -77,10 +74,10 @@ class DetailsDoctorFragment : Fragment() {
 
         }
         conseil.setOnClickListener(){
-            //it.findNavController()?.navigate(R.id.action_detailsDoctorFragment_to_adviceFragment)
-            val intent = Intent(requireActivity(),DemandeConseil::class.java)
+            it.findNavController()?.navigate(R.id.action_detailsDoctorFragment_to_adviceFragment)
+            /*val intent = Intent(requireActivity(),DemandeConseil::class.java)
             intent.putExtra("Dr",doctor)
-            this.startActivity(intent)
+            this.startActivity(intent)*/
 
         }
 

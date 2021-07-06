@@ -33,26 +33,40 @@
         tools:layout="@layout/fragment_profil" />
 
     <fragment
-        android:id="@+id/navigation_agenda"
-        android:name="com.example.projet_tdm.BookAppointmentFragment"
+        android:id="@+id/book_appointment"
+        android:name="com.example.projet_tdm.ui.bookings.BookAppointmentFragment"
         android:label="@string/title_medecins"
         tools:layout="@layout/fragment_book_appointment" />
     <fragment
         android:id="@+id/detailsDoctorFragment"
-        android:name="com.example.projet_tdm.DetailsDoctorFragment"
-        android:label="fragment_details_doctor"
+        android:name="com.example.projet_tdm.ui.doctors.DetailsDoctorFragment"
+        android:label="Detail doctor"
         tools:layout="@layout/fragment_details_doctor" >
         <action
             android:id="@+id/action_detailsDoctorFragment_to_navigation_agenda"
-            app:destination="@id/navigation_agenda" />
+            app:destination="@id/book_appointment" />
         <action
             android:id="@+id/action_detailsDoctorFragment_to_adviceFragment"
             app:destination="@id/adviceFragment" />
     </fragment>
     <fragment
         android:id="@+id/adviceFragment"
-        android:name="com.example.projet_tdm.AdviceFragment"
+        android:name="com.example.projet_tdm.ui.advice.AdviceFragment"
         android:label="fragment_advice"
         tools:layout="@layout/fragment_advice" />
+    <fragment
+        android:id="@+id/infosBookingFragment"
+        android:name="com.example.projet_tdm.ui.bookings.InfosBookingFragment"
+        android:label="Details Rendez-vous"
+        tools:layout="@layout/fragment_infos_booking" />
+    <fragment
+        android:id="@+id/navigation_agenda"
+        android:name="com.example.projet_tdm.ui.bookings.BookingsFragment"
+        android:label="Rendez-vous"
+        tools:layout="@layout/fragment_bookings" >
+        <action
+            android:id="@+id/action_navigation_agenda_to_infosBookingFragment"
+            app:destination="@id/infosBookingFragment" />
+    </fragment>
 
 </navigation>

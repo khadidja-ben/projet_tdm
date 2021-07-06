@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projet_tdm.R
-import com.example.projet_tdm.ui.OnBoardingItem
+import com.example.projet_tdm.entity.OnBoardingItem
 
 class OnboardingAdapter(private val onBoardingItems: List<OnBoardingItem>) :
     RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>() {

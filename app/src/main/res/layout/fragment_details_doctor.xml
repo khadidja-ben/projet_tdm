@@ -4,49 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsDoctorFragment">
+    tools:context=".ui.doctors.DetailsDoctorFragment">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
+
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/telephoneDoctor"
         android:layout_width="67dp"
         android:layout_height="67dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/green"
-        android:padding="20dp"
         app:layout_constraintStart_toStartOf="@+id/specialityView"
         app:layout_constraintTop_toBottomOf="@+id/specialityView"
-        tools:srcCompat="@drawable/ic_phone" />
+        app:shapeAppearanceOverlay="@style/imageShapeOverlay"
+        app:srcCompat="@drawable/ic_phone_color"
+        app:strokeColor="?android:attr/colorBackground"
+        app:strokeWidth="3dp" />
 
-    <ImageView
+
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/localisationDoctor"
         android:layout_width="67dp"
         android:layout_height="67dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/yellow"
-        android:padding="20dp"
+
         app:layout_constraintEnd_toStartOf="@+id/facebookDoctor"
         app:layout_constraintStart_toEndOf="@+id/telephoneDoctor"
         app:layout_constraintTop_toTopOf="@+id/telephoneDoctor"
-        tools:srcCompat="@drawable/ic_localisation" />
+        app:shapeAppearanceOverlay="@style/imageShapeOverlay"
+        app:srcCompat="@drawable/ic_localisation_color"
+        app:strokeColor="?android:attr/colorBackground"
+        app:strokeWidth="3dp" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/facebookDoctor"
         android:layout_width="67dp"
         android:layout_height="67dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/blue"
-        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/localisationDoctor"
-        tools:srcCompat="@drawable/ic_facebook" />
+        app:shapeAppearanceOverlay="@style/imageShapeOverlay"
+        app:srcCompat="@drawable/ic_facebook_color"
+        app:strokeColor="?android:attr/colorBackground"
+        app:strokeWidth="3dp" />
+
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -158,16 +163,17 @@
         android:textColor="@color/app_black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/specialityView"
-        app:layout_constraintTop_toBottomOf="@+id/telephoneDoctor" />
+        app:layout_constraintTop_toBottomOf="@+id/localisationDoctor" />
 
     <TextView
         android:id="@+id/biographieContent"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
         android:textColor="@color/app_black"
+        app:layout_constraintEnd_toEndOf="@+id/reserver"
         app:layout_constraintStart_toStartOf="@+id/bographieTitle"
         app:layout_constraintTop_toBottomOf="@+id/bographieTitle" />
 

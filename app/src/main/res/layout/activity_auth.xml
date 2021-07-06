@@ -5,7 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/nestedScrollView"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".ui.AuthActivity"
+tools:context=".ui.activities.AuthActivity"
 tools:viewBindingIgnore="true">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -28,7 +28,7 @@ tools:viewBindingIgnore="true">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/nom" />
 
     <EditText
         android:id="@+id/password"
@@ -100,7 +100,7 @@ tools:viewBindingIgnore="true">
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nom"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_marginStart="30dp"

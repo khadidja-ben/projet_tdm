@@ -14,10 +14,10 @@ interface EndPoints {
     @GET("doctors")
     fun getDoctors():Call<List<Doctor>>
 
-    @POST("addAdvice")
+    @POST("advice")
     fun addAdvice (@Body advice: Advice):Call<String>
 
-    @POST ("addAdvices")
+    @POST ("advices")
     fun addAdvices (@Body advices: List<Advice>):Call<String>
 
     @GET("currentTreatmentsPatient/{id}")
@@ -40,4 +40,8 @@ interface EndPoints {
 
     @GET("/booking/{bookingDate}/{bookingTime}/{idPatient}/{idDoctor}")
     fun addBooking(@Path("bookingDate") bookingDate: String, @Path("bookingTime")bookingTime: String,@Path("idPatient") idPatient: Int, @Path("idDoctor")idDoctor: Int):Call<String>
+
+    @GET("/bookingPatient/{idPatient}/{bookingDate}")
+    fun getAllBookingPatientByDate(@Path("idPatient") idPatient: Int, @Path("bookingDate") bookingDate: String): Call <List<Booking>>
+
 }

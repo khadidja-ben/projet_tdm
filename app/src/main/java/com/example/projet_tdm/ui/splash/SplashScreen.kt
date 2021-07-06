@@ -1,4 +1,4 @@
-package com.example.projet_tdm.ui
+package com.example.projet_tdm.ui.splash
 
 
 import android.content.Intent

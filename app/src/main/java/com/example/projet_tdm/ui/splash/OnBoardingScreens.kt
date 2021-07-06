@@ -1,4 +1,4 @@
-package com.example.projet_tdm.ui
+package com.example.projet_tdm.ui.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,6 +12,9 @@ import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.projet_tdm.R
+import com.example.projet_tdm.entity.OnBoardingItem
+import com.example.projet_tdm.ui.activities.AuthActivity
+import com.example.projet_tdm.ui.activities.UserPatientActivity
 import com.example.projet_tdm.ui.adapters.OnboardingAdapter
 
 
@@ -101,7 +104,7 @@ class OnBoardingScreens : AppCompatActivity() {
     private fun setOnboardingItem() {
         val onBoardingItems: MutableList<OnBoardingItem> = mutableListOf()
         val item1 = OnBoardingItem()
-        item1.title="Consultez vous traitements"
+        item1.title="Consultez vos traitements"
         item1.description="Vous pouvez consulter vos traitements via l'application!"
         item1.image=R.drawable.on_boarding_screen1
 
